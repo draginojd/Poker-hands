@@ -14,6 +14,6 @@ test('Check that isFourOfAKind returns a higher score for the stronger hand (if 
     let hand1Score = CompareHands.isFourOfAKind(hand1);
     let hand2Score = CompareHands.isFourOfAKind(hand2);
     
-    let rank = CompareHands.rankToPoint(hand1);
+    let rank = CompareHands.rankToPoint(ranks);
     expect(CompareHands.isFourOfAKind(hand2Score)).toBeGreaterThan(CompareHands.isFourOfAKind(hand1Score));
 });
