@@ -23,6 +23,7 @@ module.exports = class CompareHands {
       ranks[card.rank] = (ranks[card.rank] || 0) + 1;
     }
     return [Object.keys(ranks), Object.values(ranks)];
+
   }
 
   // add kickers to score
@@ -69,9 +70,10 @@ module.exports = class CompareHands {
     let [ranks, occurences] = this.rankOccurences(hand);
     let rankOfFours = ranks[occurences.indexOf(4)];
     if (!rankOfFours) { return 0; }
-    let mainScore = rankToPoint(rankOfFours);
     let kickers = hand.cards.filter(({ rank }) => rank !== rankOfFours);
+    let mainScore = this.rankToPoint(rankOfFours);
     return this.scoreWithKickers(mainScore, kickers);
+
   }
 
   static isFullHouse(hand) {
