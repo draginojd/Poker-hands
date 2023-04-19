@@ -5,12 +5,12 @@ const ranks = "23456789TJQKA";
 
 test("Check that isFourOfAKind returns truthy2", () => {
     let prevRank;
-    let prevSuit;
     for (let suit of suits) {
         for (let rank of ranks) {
             let hand = new Hand("♣" + rank, "♥" + rank, "♦" + rank, "♠" + rank, "♥" + (prevRank ? prevRank : "A"));
             prevRank = rank;
             expect(CompareHands.isFourOfAKind(hand)).toBeTruthy();
+            console.log(hand);
         }
     }
 });

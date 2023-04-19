@@ -20,13 +20,30 @@ test('check that isStraight returns truthy if straight', () => {
 });
 
 test("check that isStraight returns falsy if not straight", () => {
+  const deck = new DeckOfCards();
   for (let suit of suits) {
-    for (let rank of "234567") {
+    for (let rank of "23456789TJQA") {
       let hand = new Hand(suit + rank, suit + rank, suit + rank, suit + rank, suit + rank);
-      DeckOfCards.shuffle(hand.cards);
+      deck.shuffle(hand.cards);
       expect(CompareHands.isStraight(hand)).toBeFalsy();
       console.log(hand);
     }
   }
+});
+
+test("check that isStraight returns the highest score for the hand with the strongest straight", () => {
+  let hand1 = new Hand("♥2", "♠3", "♣4", "♥5", "♣6");
+  let hand2 = new Hand("♣9", "♣T", "♥J", "♠Q", "♣K");
+  hand1Score = CompareHands.isStraight(hand1);
+  hand2Score = CompareHands.isStraight(hand2);
+  expect(hand2Score).toBeGreaterThan(hand1Score);
+});
+
+test("check that isStraight returns the lowest score for the hand with the weakest straight", () => {
+  let hand1 = new Hand("♥2", "♠3", "♣4", "♥5", "♣6");
+  let hand2 = new Hand("♣9", "♣T", "♥J", "♠Q", "♣K");
+  hand1Score = CompareHands.isStraight(hand1);
+  hand2Score = CompareHands.isStraight(hand2);
+  expect(hand1Score).toBeLessThan(hand2Score);
 });
 
