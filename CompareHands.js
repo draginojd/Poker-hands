@@ -60,6 +60,15 @@ module.exports = class CompareHands {
     }
   }
 
+  /* static rankOfPairs(occurences, ranks) {
+    let pairIndexes = [];
+    occurences.forEach((occurences, index) => {
+      if (occurence === 2) { pairIndexes.push(index); }
+    });
+    if (pairIndexes.length !==2) { return null; }
+    let rankOfPair = ranks[pairIndexes[0]] > ranks[pairIndexes[1]] ? ranks[pairIndexes[0]] : ranks[pairIndexes[1]];
+  } */
+
   // Comparers
 
   static isStraightFlush(hand) {
@@ -78,9 +87,9 @@ module.exports = class CompareHands {
 
   static isFullHouse(hand) {
     let [ranks, occurences] = this.rankOccurences(hand);
+    let rankOfPairs = ranks[occurences.indexOf(2)];
     let rankOfThrees = ranks[occurences.indexOf(3)];
-    let rankOfPair = ranks[occurences.indexOf(2)];
-    if (!rankOfThrees || !rankOfPair) { return 0; }
+    if (!rankOfThrees || !rankOfPairs) { return 0; }
     return this.rankToPoint(rankOfThrees) * 100 + this.rankToPoint(rankOfPairs);
   }
 
