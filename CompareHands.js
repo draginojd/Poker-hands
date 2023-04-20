@@ -120,7 +120,7 @@ module.exports = class CompareHands {
     if (occurences.indexOf(2) === occurences.lastIndexOf(2)) { return 0; }
     let rankOfLowestPair = ranks[occurences.indexOf(2)];
     let rankOfHighestPair = ranks[occurences.lastIndexOf(2)];
-    let mainScore = this.ranktoPoint(rankOfHighestPair) * 100
+    let mainScore = this.rankToPoint(rankOfHighestPair) * 100
       + this.rankToPoint(rankOfLowestPair);
     let kickers = [hand.cards[occurences.indexOf(1)]];
     return this.scoreWithKickers(mainScore, kickers);
