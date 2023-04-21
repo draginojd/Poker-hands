@@ -23,13 +23,12 @@ describe('Is Two Pair', () => {
         expect(hand1Score).toBeGreaterThan(hand2Score);
     });
     
-    test("Check that isTwoPair returns the highest score for the hand with the strongest Two pairs", () => {
+    test("Check that isTwoPair returns the lowest score for the hand with the weakest Two pairs", () => {
         let hand1 = new Hand("♥2", "♦2", "♣3", "♥3", "♦8");
         let hand2 = new Hand("♥6", "♥6", "♠7", "♦7", "♣8");
         hand1Score = CompareHands.isTwoPair(hand1);
         hand2Score = CompareHands.isTwoPair(hand2);
         expect(hand1Score).toBeLessThan(hand2Score);
-    
     }); 
 });
 
